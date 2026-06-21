@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 · 信息卡片 · 快速识别</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            padding: 2.8rem 2.4rem;
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 2rem 1.4rem;
+                border-radius: 24px;
+            }
+            body {
+                padding: 1rem 0.6rem 3rem;
+            }
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #0b1a2b;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #5d6b7c;
+            margin-bottom: 2.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e9ecf0;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 2.4rem;
+            margin-bottom: 1rem;
+            padding-left: 0.25rem;
+            border-left: 4px solid #2e7d8f;
+            padding-left: 0.75rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 1.4rem 0 0.6rem;
+            color: #1f3a4b;
+        }
+
+        p {
+            margin-bottom: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .hero-card {
+            background: #f0f4f9;
+            border-radius: 20px;
+            padding: 2rem 1.8rem;
+            margin: 1.2rem 0 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .hero-card .stat {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2e7d8f;
+            letter-spacing: 0.3px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.2rem 0 1.8rem;
+        }
+
+        @media (max-width: 540px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e4e9f0;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem 1.2rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+            border-color: #cbd5e1;
+        }
+
+        .info-card .emoji-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .info-card h3 {
+            margin-top: 0.2rem;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: #3d4f62;
+            margin-bottom: 0;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .tag {
+            background: #eef2f7;
+            color: #1f3a4b;
+            font-size: 0.85rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-weight: 450;
+        }
+
+        .faq-mini {
+            background: #f9fafc;
+            border-radius: 16px;
+            padding: 1.2rem 1.4rem;
+            margin: 1.8rem 0 1rem;
+            border-left: 3px solid #2e7d8f;
+        }
+
+        .faq-mini p {
+            margin-bottom: 0.5rem;
+        }
+        .faq-mini p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-mini .q {
+            font-weight: 500;
+            color: #0e1e2e;
+        }
+
+        .natural-link {
+            font-size: 1rem;
+            background: #eaf0f7;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .natural-link a {
+            color: #1f5e6b;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b7ccda;
+            padding-bottom: 1px;
+        }
+
+        .natural-link a:hover {
+            border-bottom-color: #1f5e6b;
+        }
+
+        hr {
+            margin: 2.2rem 0 1rem;
+            border: 0;
+            height: 1px;
+            background: #dce2ea;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #6f7f91;
+            text-align: center;
+            margin-top: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <h1>华体会 · 用途速览</h1>
+    <div class="subhead">一份信息卡片式导览，帮助新用户快速理解网站定位</div>
+
+    <!-- 主视觉卡片 / hero -->
+    <div class="hero-card">
+        <div class="stat">▎ 核心定位</div>
+        <p style="font-size: 1.15rem; font-weight: 450; margin-bottom: 0.4rem;">集合体育资讯与服务的信息入口</p>
+        <p>华体会围绕体育内容、赛事动态及社区互动，提供结构化信息与轻量化工具，适合日常浏览与深度关注。</p>
+        <div style="margin-top: 0.2rem; font-size: 0.9rem; color: #385d6e;">
+            <span style="background: #dde6ef; padding: 0.1rem 0.7rem; border-radius: 40px;">信息卡片 · 场景导览</span>
+        </div>
+    </div>
+
+    <!-- 用途卡片 2列 -->
+    <h2>常用场景卡片</h2>
+    <div class="grid-2col">
+        <div class="info-card">
+            <div class="emoji-icon">📋</div>
+            <h3>赛事动态速览</h3>
+            <p>比分、赛程、积分榜与关键数据聚合，降低信息获取成本。</p>
+            <div class="tag-group">
+                <span class="tag">实时更新</span>
+                <span class="tag">多联赛</span>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="emoji-icon">🧩</div>
+            <h3>社区讨论与分享</h3>
+            <p>用户可围绕球队、球员及战术展开讨论，形成轻量互动圈层。</p>
+            <div class="tag-group">
+                <span class="tag">话题广场</span>
+                <span class="tag">理性交流</span>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="emoji-icon">📊</div>
+            <h3>数据与统计</h3>
+            <p>球队历史战绩、球员效率、赛季对比等结构化数据模块。</p>
+            <div class="tag-group">
+                <span class="tag">可视化</span>
+                <span class="tag">筛选对比</span>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="emoji-icon">🔍</div>
+            <h3>内容检索与导航</h3>
+            <p>按联赛、时间、热度分类的信息陈列，快速定位感兴趣内容。</p>
+            <div class="tag-group">
+                <span class="tag">分类标签</span>
+                <span class="tag">搜索</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <h2>适合哪些人</h2>
+    <p style="margin-bottom: 0.6rem;"><strong>体育关注者</strong> · 希望系统获取赛事信息与动态的用户，不论资深还是轻度。</p>
+    <p style="margin-bottom: 0.6rem;"><strong>资料查阅者</strong> · 需要球队/联赛历史数据、赛季走势等参考内容的浏览者。</p>
+    <p style="margin-bottom: 1rem;"><strong>社区参与者</strong> · 偏好阅读讨论、跟帖表达观点、关注话题热度的用户。</p>
+
+    <!-- 自然链接段落 -->
+    <div style="margin: 1.6rem 0 0.8rem;">
+        <p>如果你正在寻找一个整合赛事资讯与社区讨论的信息站点，不妨了解 <span class="natural-link"><a href="https://index-official-hth.com.cn">华体会</a></span> 的页面结构与内容组织方式，判断是否符合自己的需求。</p>
+        <p style="margin-top: 0.2rem;">该平台侧重体育内容聚合，不同模块对应不同使用习惯，初次浏览可先关注卡片与导航区。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <p class="q">❓ 常见疑问摘要</p>
+        <p><strong>Q：</strong> 网站主要提供什么类型内容？<br>
+        <strong>A：</strong> 以足球、篮球等主流体育赛事信息为主，包含数据、资讯与社区互动。</p>
+        <p><strong>Q：</strong> 信息更新频率如何？<br>
+        <strong>A：</strong> 赛事数据与比分保持实时同步，社区内容由用户动态生成。</p>
+        <p style="font-size: 0.9rem; color: #4b637a;">🔹 更多细节可浏览网站各分区说明。</p>
+    </div>
+
+    <!-- 补充卡片提示 -->
+    <div style="background: #f9fafc; border-radius: 16px; padding: 1rem 1.4rem; margin: 1.8rem 0 0.4rem;">
+        <p style="font-size: 0.95rem; margin-bottom: 0.2rem;"><span style="font-weight: 500;">💡 使用建议</span> · 从导航入口或首页卡片开始浏览，利用标签筛选快速定位感兴趣联赛。</p>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        信息卡片式导览 · 内容基于公开网站结构描述
+    </div>
+
+</div>
+
+</body>
+</html>
